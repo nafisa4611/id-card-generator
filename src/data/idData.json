@@ -1,0 +1,24 @@
+[
+  {
+    "id": "EMP-001",
+    "name": "Nafisa Mila",
+    "designation": "Front End Developer",
+    "department": "IT",
+    "bloodGroup": "B+",
+    "photo": "/photo1.jpg",
+    "signature": "/sign.jpg",
+    "company": "TechSoft Ltd",
+    "address": "Dhaka, Bangladesh"
+  },
+  {
+    "id": "EMP-002",
+    "name": "Rahim Ahmed",
+    "designation": "UI Designer",
+    "department": "Design",
+    "bloodGroup": "O+",
+    "photo": "/photo2.jpg",
+    "signature": "/sign.jpg",
+    "company": "TechSoft Ltd",
+    "address": "Dhaka, Bangladesh"
+  }
+]
