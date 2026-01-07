@@ -1,63 +1,41 @@
 import domtoimage from "dom-to-image-more";
 import jsPDF from "jspdf";
 
-export default function DownloadPDFButton({ targetRef, fileName }) {
+export default function DownloadPDFButton({ pageRefs }) {
   const downloadPDF = async () => {
-    if (!targetRef?.current) return;
+    const pdf = new jsPDF("p", "mm", "a4");
+
+    document.body.classList.add("pdf-export");
 
     try {
-      const scale = 3; // higher = sharper
-      const node = targetRef.current;
+      for (let i = 0; i < pageRefs.current.length; i++) {
+        const node = pageRefs.current[i];
+        if (!node) continue;
 
-      const dataUrl = await domtoimage.toPng(node, {
-        bgcolor: "#ffffff",
-        width: node.scrollWidth * scale,
-        height: node.scrollHeight * scale,
-        style: {
-          transform: `scale(${scale})`,
-          transformOrigin: "top left",
-          width: node.scrollWidth + "px",
-          height: node.scrollHeight + "px",
-        },
-      });
+        const dataUrl = await domtoimage.toPng(node, {
+          bgcolor: "#ffffff",
+          scale: 2,
+          cacheBust: true,
+        });
 
-      // Create PDF
-      const pdf = new jsPDF("p", "mm", "a4");
-      const pageWidth = 210; // mm
-      const pageHeight = 297; // mm
+        if (i > 0) pdf.addPage();
 
-      // Use actual image dimensions for aspect ratio
-      const imgProps = pdf.getImageProperties(dataUrl);
-      const pdfWidth = pageWidth;
-      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-
-      let heightLeft = pdfHeight;
-      let position = 0;
-
-      // First page
-      pdf.addImage(dataUrl, "PNG", 0, position, pdfWidth, pdfHeight);
-      heightLeft -= pageHeight;
-
-      // Additional pages if needed
-      while (heightLeft > 0) {
-        position = heightLeft - pdfHeight;
-        pdf.addPage();
-        pdf.addImage(dataUrl, "PNG", 0, position, pdfWidth, pdfHeight);
-        heightLeft -= pageHeight;
+        pdf.addImage(dataUrl, "PNG", 0, 0, 210, 297);
       }
 
-      pdf.save(fileName || "id-cards.pdf");
+      pdf.save("id-cards.pdf");
     } catch (err) {
-      console.error("PDF generation failed:", err);
-      alert("PDF generation failed. Check console.");
+      console.error(err);
+      alert("PDF generation failed.");
+    } finally {
+      document.body.classList.remove("pdf-export");
     }
   };
 
   return (
     <button
-      type="button"
       onClick={downloadPDF}
-      className="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+      className="px-6 py-2 bg-blue-600 text-white rounded"
     >
       Download PDF
     </button>
