@@ -19,9 +19,9 @@ export default function IDCardFront({ data }) {
         )}
       </div>
 
-      {/* RIGHT PANEL: DETAILS */}
+      {/* RIGHT PANEL */}
       <div className="flex flex-col justify-between flex-1 p-3 relative">
-        {/* Top Right: Logo */}
+        {/* LOGO – Top Right */}
         {data.logo && (
           <img
             src={data.logo}
@@ -30,33 +30,60 @@ export default function IDCardFront({ data }) {
           />
         )}
 
-        {/* User Details */}
-        <div className="flex flex-col justify-center h-full ml-2 space-y-0.5">
+        {/* USER DETAILS */}
+        <div className="flex flex-col justify-center h-full ml-2 space-y-0.5 pr-14">
           <p className="text-lg font-bold text-gray-900 truncate">{data.name}</p>
-          <p className="text-sm font-semibold text-gray-700 truncate">ID: {data.id}</p>
+          <p className="text-sm font-semibold text-gray-700 truncate">
+            ID: {data.id}
+          </p>
+
           {data.designation && (
-            <p className="text-sm text-gray-700 truncate">{data.designation}</p>
+            <p className="text-sm text-gray-700 truncate">
+              {data.designation}
+            </p>
           )}
+
           {data.department && (
-            <p className="text-sm text-gray-700 truncate">{data.department}</p>
+            <p className="text-sm text-gray-700 truncate">
+              {data.department}
+            </p>
           )}
+
           {data.level && data.semester && (
             <p className="text-sm text-gray-700 truncate">
               Level: {data.level} | Semester: {data.semester}
             </p>
           )}
+
           {data.bloodGroup && (
-            <p className="text-sm text-gray-700 truncate">Blood Group: {data.bloodGroup}</p>
+            <p className="text-sm text-gray-700 truncate">
+              Blood Group: {data.bloodGroup}
+            </p>
           )}
+
           {data.type && (
-            <p className="text-xs font-medium text-gray-600 truncate">Type: {data.type}</p>
+            <p className="text-xs font-medium text-gray-600 truncate">
+              {data.type}
+            </p>
           )}
         </div>
 
-        {/* Horizontal Divider */}
+        {/* QR CODE – Bottom Right */}
+        {data.qrCode && (
+          <div className="absolute bottom-8 right-3">
+            <img
+              src={data.qrCode}
+              alt="QR Code"
+              className="object-contain"
+              style={{ width: 42, height: 42 }}
+            />
+          </div>
+        )}
+
+        {/* DIVIDER */}
         <div className="border-t border-gray-200 mt-1"></div>
 
-        {/* Footer: Company Name */}
+        {/* FOOTER */}
         {data.company && (
           <p className="text-xs text-gray-500 text-center mt-1 px-1 break-words">
             {data.company}
