@@ -11,12 +11,14 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
 
         {/* Logo */}
+        <Link to="/" className="cursor-pointer">
         <div className="flex items-center gap-2">
           <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-bold flex items-center justify-center text-lg shadow-lg">
             ID
           </div>
           <span className="font-bold text-gray-800 text-lg">ID Card Generator</span>
         </div>
+        </Link>
 
         {/* Desktop Links */}
         <ul className="hidden md:flex items-center gap-8 text-sm text-gray-600">

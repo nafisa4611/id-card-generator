@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <section className="bg-gray-50 py-20">
+    <section className="bg-gray-50 py-8">
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-10">
         <div className="flex-1">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
