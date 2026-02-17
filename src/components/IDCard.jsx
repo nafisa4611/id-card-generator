@@ -54,10 +54,10 @@ export default function IDCard() {
   const goToPrev = () => setCurrentIndex((prev) => (prev - 1 + dataList.length) % dataList.length);
 
   return (
-    <div className="flex flex-col h-screen bg-bg font-sans">
+    <div className="flex flex-col bg-bg font-sans">
       {/* HEADER */}
-      <header className="h-16 bg-bg border-b flex items-center justify-between px-8 shrink-0 shadow-sm z-10">
-        <h1 className="text-2xl font-bold text-textColor">ID Generator Dashboard</h1>
+      <header className="h-16 border-gray-400 flex items-center justify-between px-8 shrink-0 shadow-sm z-10">
+        <h1 className=""></h1>
         {dataList.length > 0 && (
           <button onClick={clearData} className="text-xs font-bold text-textColor hover:text-blue-500 flex items-center gap-1 cursor-pointer transition-colors">
             Reset Dashboard ↺
