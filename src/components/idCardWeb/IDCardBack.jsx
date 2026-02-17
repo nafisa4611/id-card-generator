@@ -1,12 +1,12 @@
 export default function IDCardBack({ data }) {
   return (
     <div
-      className="border rounded-lg shadow-md bg-white flex flex-col p-3"
+      className="rounded-lg shadow-md bg-bg flex flex-col p-3"
       style={{ width: 360, height: 220 }}
     >
       {/* Header */}
-      <div className="text-center mb-1 flex-shrink-0 h-6 border-b border-gray-200">
-        <p className="text-xs font-semibold text-gray-600 uppercase">
+      <div className="text-center mb-1 flex-shrink-0 h-6 border-b border-border flex items-center justify-center">
+        <p className="text-xs font-semibold text-textColor uppercase">
           ID Card Details
         </p>
       </div>
@@ -17,23 +17,23 @@ export default function IDCardBack({ data }) {
         style={{ maxHeight: 100 }}
       >
         {data.address && (
-          <p className="text-xs text-gray-700 truncate">
+          <p className="text-xs text-textColor truncate">
             Address: {data.address}
           </p>
         )}
         {data.phone && (
-          <p className="text-xs text-gray-700 truncate">Phone: {data.phone}</p>
+          <p className="text-xs text-textColor truncate">Phone: {data.phone}</p>
         )}
         {data.email && (
-          <p className="text-xs text-gray-700 truncate">Email: {data.email}</p>
+          <p className="text-xs text-textColor truncate">Email: {data.email}</p>
         )}
         {data.emergencyContact && (
-          <p className="text-xs text-gray-700 truncate">
+          <p className="text-xs text-textColor truncate">
             Emergency Contact: {data.emergencyContact}
           </p>
         )}
         {data.expiry && (
-          <p className="text-xs text-gray-700 truncate">Valid Until: {data.expiry}</p>
+          <p className="text-xs text-textColor truncate">Valid Until: {data.expiry}</p>
         )}
       </div>
 
@@ -50,19 +50,19 @@ export default function IDCardBack({ data }) {
                 style={{ width: 70, height: 35 }}
               />
             )}
-            <p className="text-xs text-gray-600 mt-1 text-center">
+            <p className="text-xs text-textColor mt-1 text-center">
               Authorized Signatory
             </p>
           </div>
         </div>
 
         {/* Divider below signature */}
-        <div className="border-t border-gray-200 mt-1"></div>
+        <div className="border-t border-border mt-1"></div>
 
         {/* Footer: Company Name */}
         {data.company && (
           <div className="text-center mt-1 h-4">
-            <p className="text-xs text-gray-500 truncate">{data.company}</p>
+            <p className="text-xs text-textColor truncate">{data.company}</p>
           </div>
         )}
       </div>
